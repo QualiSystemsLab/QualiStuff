@@ -3,7 +3,7 @@
 # Use:			Set of Functions that Create and Insert data to database for Sisense Purposes
 # Assumptions:	User has access to database
 # Author:		Joao Ferreira
-# Version:		0.1 (Non Production)
+# Version:		0.2 (Non Production)
 #################################################################
 
 import pyodbc
@@ -71,7 +71,7 @@ class Reporting_Attributes_Class:
                 for resource_attribute in resource_attributes:
                     if (resource_attribute.Name == attribute):
                         sql_statement = """ UPDATE Custom_Attributes
-                        SET """ + attribute + """ = '""" + str(resource_attribute.Value) + """'
+                        SET [""" + attribute + """ = '"""] + str(resource_attribute.Value) + """'
                         WHERE ResourceFullName = '""" + resource.FullName + """' AND ResourceName = '""" + resource.Name + """'; """
                         self.cursor.execute(sql_statement)
 
